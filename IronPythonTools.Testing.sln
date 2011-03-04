@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronPythonTools.Testing", "IronPythonTools.Testing\IronPythonTools.Testing.csproj", "{9D8729BB-3F9C-4328-9736-4A8D6307F8EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronPythonTools.Testing.Tests", "IronPythonTools.Testing.Tests\IronPythonTools.Testing.Tests.csproj", "{09606F43-D5D3-4BDE-81B0-06241A8AEE78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E6E9D133-E5C4-46A7-8605-487732337FDA}"
+	ProjectSection(SolutionItems) = preProject
+		IronPythonTools.Testing.vsmdi = IronPythonTools.Testing.vsmdi
+		UnitTests.testsettings = UnitTests.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlayground", "TestPlayground\TestPlayground.csproj", "{698726A6-32D5-492E-BADC-312004FF6218}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = IronPythonTools.Testing.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D8729BB-3F9C-4328-9736-4A8D6307F8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D8729BB-3F9C-4328-9736-4A8D6307F8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D8729BB-3F9C-4328-9736-4A8D6307F8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D8729BB-3F9C-4328-9736-4A8D6307F8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09606F43-D5D3-4BDE-81B0-06241A8AEE78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09606F43-D5D3-4BDE-81B0-06241A8AEE78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09606F43-D5D3-4BDE-81B0-06241A8AEE78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09606F43-D5D3-4BDE-81B0-06241A8AEE78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{698726A6-32D5-492E-BADC-312004FF6218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{698726A6-32D5-492E-BADC-312004FF6218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{698726A6-32D5-492E-BADC-312004FF6218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{698726A6-32D5-492E-BADC-312004FF6218}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
