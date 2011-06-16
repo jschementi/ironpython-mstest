@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{698726A6-32D5-492E-BADC-312004FF6218}</ProjectGuid>
+    <ProjectGuid>{982120AD-6F17-4252-9EE3-E58BED2595CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestPlayground</RootNamespace>
-    <AssemblyName>TestPlayground</AssemblyName>
+    <RootNamespace>ExampleTestProject</RootNamespace>
+    <AssemblyName>ExampleTestProject</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -33,16 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IronPython" />
+    <Reference Include="IronPython.Modules" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Scripting" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="IronPython" />
-    <Reference Include="IronPython.Modules" />
-    <Reference Include="Microsoft.Dynamic" />
-    <Reference Include="Microsoft.Scripting" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -50,14 +49,19 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamicUnitTestEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestUnit2.cs" />
+    <Compile Include="test_example.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>test_example.py</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="TestUnit2.py">
+    <EmbeddedResource Include="test_example.py">
+      <Generator>IronPythonTestingGenerator</Generator>
+      <LastGenOutput>test_example.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
