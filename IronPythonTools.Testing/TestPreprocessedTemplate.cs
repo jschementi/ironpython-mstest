@@ -12,7 +12,7 @@ namespace IronPythonTools.Testing
     using System;
     
     
-    #line 1 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+    #line 1 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "10.0.0.0")]
     public partial class TestPreprocessedTemplate : TestPreprocessedTemplateBase
     {
@@ -88,14 +88,14 @@ namespace IronPythonTools.Testing
 
 namespace ");
             
-            #line 14 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 14 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.NameSpace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 17 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 17 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
  
 foreach (var import in this.Usings) { 
             
@@ -103,14 +103,14 @@ foreach (var import in this.Usings) {
             #line hidden
             this.Write("    using ");
             
-            #line 19 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 19 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(import));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 20 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 20 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
  
 } 
             
@@ -118,19 +118,18 @@ foreach (var import in this.Usings) {
             #line hidden
             this.Write("#if SILVERLIGHT\r\n    using Microsoft.Scripting.Silverlight;\r\n#endif\r\n\r\n");
             
-            #line 26 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 26 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
  
-foreach (var klass in this.Structure) { 
-       var className = klass.Key;
-       var methods = klass.Value;
+foreach (var klassKvp in this.Structure) { 
+    var klass = klassKvp.Value;
 
             
             #line default
             #line hidden
-            this.Write("\r\n    [TestClass()]\r\n    public class ");
+            this.Write("\r\n    [TestClass]\r\n    public class ");
             
-            #line 33 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(className));
+            #line 32 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(klass.Name));
             
             #line default
             #line hidden
@@ -138,8 +137,8 @@ foreach (var klass in this.Structure) {
                     "le;\r\n        \r\n        private object klass;\r\n\r\n        private object klassInst" +
                     "ance;\r\n\r\n        public ");
             
-            #line 43 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(className));
+            #line 42 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(klass.Name));
             
             #line default
             #line hidden
@@ -157,7 +156,7 @@ foreach (var klass in this.Structure) {
 
 			var file = """);
             
-            #line 55 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 54 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(this.FileName));
             
             #line default
@@ -173,32 +172,72 @@ foreach (var klass in this.Structure) {
 
             klass = engine.Operations.GetMember(module, """);
             
-            #line 64 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(className));
+            #line 63 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(klass.Name));
             
             #line default
             #line hidden
-            this.Write(@""");
-            klassInstance = ((dynamic)klass)();
-        }
-
-        private void CallPythonTestMethod(string methodName)
-        {
-            dynamic method = engine.Operations.GetMember(klassInstance, methodName);
-            method();
-        }
-
-");
+            this.Write("\");\r\n            klassInstance = ((dynamic)klass)();\r\n        }\r\n\r\n");
             
-            #line 74 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 67 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+
+if (klass.SetupMethodName != null) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [TestInitialize]\r\n\t\tpublic void TestInitialize() {\r\n\t\t    engine.Operatio" +
+                    "ns.GetMember(klassInstance, \"");
+            
+            #line 71 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(klass.SetupMethodName));
+            
+            #line default
+            #line hidden
+            this.Write("\")();\r\n\t\t}\r\n");
+            
+            #line 73 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+
+}
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 77 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+
+if (klass.TeardownMethodName != null) { 
+            
+            #line default
+            #line hidden
+            this.Write("        [TestCleanup]\r\n\t\tpublic void TestCleanup() {\r\n\t\t    engine.Operations.Get" +
+                    "Member(klassInstance, \"");
+            
+            #line 81 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(klass.TeardownMethodName));
+            
+            #line default
+            #line hidden
+            this.Write("\")();\r\n\t\t}\r\n");
+            
+            #line 83 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+
+}
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 87 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
  
-foreach (var method in methods) { 
+foreach (var method in klass.TestMethodNames) { 
             
             #line default
             #line hidden
-            this.Write("        [TestMethod()]\r\n#if !SILVERLIGHT\r\n");
+            this.Write("\r\n        [TestMethod]\r\n#if !SILVERLIGHT\r\n");
             
-            #line 78 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 92 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
  
 foreach (var item in this.DeploymentItems) { 
             
@@ -206,7 +245,7 @@ foreach (var item in this.DeploymentItems) {
             #line hidden
             this.Write("        [DeploymentItem(");
             
-            #line 80 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 94 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
  
     for(var i = 0; i < item.Count; i++) {
         if (item[i] == null) continue;
@@ -216,7 +255,7 @@ foreach (var item in this.DeploymentItems) {
             #line hidden
             this.Write(", ");
             
-            #line 84 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 98 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
 
         } 
             
@@ -224,14 +263,14 @@ foreach (var item in this.DeploymentItems) {
             #line hidden
             this.Write("\"");
             
-            #line 86 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 100 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(item[i]));
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 86 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 100 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
 
         
     } 
@@ -240,7 +279,7 @@ foreach (var item in this.DeploymentItems) {
             #line hidden
             this.Write(")]\r\n");
             
-            #line 90 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 104 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
 
 } 
             
@@ -248,21 +287,21 @@ foreach (var item in this.DeploymentItems) {
             #line hidden
             this.Write("#endif\r\n        public void ");
             
-            #line 93 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 107 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(method));
             
             #line default
             #line hidden
-            this.Write("()\r\n        {\r\n            CallPythonTestMethod(\"");
+            this.Write("()\r\n        {\r\n            engine.Operations.GetMember(klassInstance, \"");
             
-            #line 95 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 109 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(method));
             
             #line default
             #line hidden
-            this.Write("\");\r\n        }\r\n");
+            this.Write("\")();\r\n        }\r\n");
             
-            #line 97 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 111 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
  
 } 
             
@@ -270,7 +309,7 @@ foreach (var item in this.DeploymentItems) {
             #line hidden
             this.Write("    }\r\n\r\n");
             
-            #line 101 "C:\work\1\trunk\IronPythonTools.Testing\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
+            #line 115 "Z:\proj\ironpython-mstest\IronPythonTools.Testing\TestPreprocessedTemplate.tt"
  
 } 
             

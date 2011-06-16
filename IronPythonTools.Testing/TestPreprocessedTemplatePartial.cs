@@ -10,7 +10,7 @@ namespace IronPythonTools.Testing
         public string NameSpace { get; set; }
         public string[] Usings { get; set; }
         public string FileName { get; set; }
-        public Dictionary<string, List<string>> Structure { get; set; }
+        public Dictionary<string, TestClassDefinition> Structure { get; set; }
         public List<List<string>> DeploymentItems { get; set; }
         public List<string> Path { get; set; }
     }

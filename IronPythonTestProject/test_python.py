@@ -7,6 +7,8 @@ class TestFoo(object):
         Assert.IsTrue(True)
     def test_should_pass2(self):
         Assert.IsTrue(True)
+    def test_should_also_fail(self):
+        Assert.Fail()
     def test_should_fail(self):
         Assert.IsTrue(False)
     

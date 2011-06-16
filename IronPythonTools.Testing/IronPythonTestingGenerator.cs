@@ -45,7 +45,7 @@ namespace IronPythonTools.Testing
 
         internal static bool valid;
 
-        internal IronPythonExecutor pythonExecutor;
+        internal IronPythonTestingParser pythonTestingParser;
 
         /// <summary>
         /// Function that builds the contents of the generated file based on the contents of the input file
@@ -58,7 +58,7 @@ namespace IronPythonTools.Testing
             
             try
             {
-                var pythonExecutor = new IronPythonExecutor(this.InputFilePath, inputFileContent);
+                var testingParser = new IronPythonTestingParser(this.InputFilePath, inputFileContent);
 
                 var projectFileName = this.GetProject().FullName;
 
@@ -70,7 +70,7 @@ namespace IronPythonTools.Testing
                 var deploymentItems = new List<List<string>>();
                 if (File.Exists(configPath))
                 {
-                    deploymentItems = pythonExecutor.GetDeploymentItems(
+                    deploymentItems = testingParser.GetDeploymentItems(
                         configPath,
                         File.ReadAllText(configPath));
                 }
@@ -78,7 +78,7 @@ namespace IronPythonTools.Testing
                 var generatedCode = MsTestGenerator.Generate(
                     this.InputFilePath,
                     projectFileName,
-                    pythonExecutor.GetStructure(),
+                    testingParser.GetStructure(),
                     FileNameSpace,
                     deploymentItems);
 

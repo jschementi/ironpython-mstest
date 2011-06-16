@@ -33,7 +33,7 @@ namespace IronPythonTools.Testing
         public static string Generate(
             string inputFileName,
             string projectFileName,
-            Dictionary<string, List<string>> structure,
+            Dictionary<string, TestClassDefinition> structure,
             string @namespace,
             List<List<string>> deploymentItems)
         {

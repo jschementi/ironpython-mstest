@@ -24,13 +24,12 @@ foreach (var import in this.Usings) { #>
 #endif
 
 <# 
-foreach (var klass in this.Structure) { 
-       var className = klass.Key;
-       var methods = klass.Value;
+foreach (var klassKvp in this.Structure) { 
+    var klass = klassKvp.Value;
 #>
 
-    [TestClass()]
-    public class <#= className #>
+    [TestClass]
+    public class <#= klass.Name #>
     {
         private ScriptEngine engine;
 
@@ -40,7 +39,7 @@ foreach (var klass in this.Structure) {
 
         private object klassInstance;
 
-        public <#= className #>()
+        public <#= klass.Name #>()
         {
 #if SILVERLIGHT
             var setup = DynamicApplication.CreateRuntimeSetup();
@@ -61,19 +60,34 @@ foreach (var klass in this.Structure) {
 #endif
             module = engine.ExecuteFile(filepath);
 
-            klass = engine.Operations.GetMember(module, "<#= className #>");
+            klass = engine.Operations.GetMember(module, "<#= klass.Name #>");
             klassInstance = ((dynamic)klass)();
         }
 
-        private void CallPythonTestMethod(string methodName)
-        {
-            dynamic method = engine.Operations.GetMember(klassInstance, methodName);
-            method();
-        }
+<#
+if (klass.SetupMethodName != null) { #>
+        [TestInitialize]
+		public void TestInitialize() {
+		    engine.Operations.GetMember(klassInstance, "<#= klass.SetupMethodName #>")();
+		}
+<#
+}
+#>
+
+<#
+if (klass.TeardownMethodName != null) { #>
+        [TestCleanup]
+		public void TestCleanup() {
+		    engine.Operations.GetMember(klassInstance, "<#= klass.TeardownMethodName #>")();
+		}
+<#
+}
+#>
 
 <# 
-foreach (var method in methods) { #>
-        [TestMethod()]
+foreach (var method in klass.TestMethodNames) { #>
+
+        [TestMethod]
 #if !SILVERLIGHT
 <# 
 foreach (var item in this.DeploymentItems) { #>
@@ -92,7 +106,7 @@ foreach (var item in this.DeploymentItems) { #>
 #endif
         public void <#= method #>()
         {
-            CallPythonTestMethod("<#= method #>");
+            engine.Operations.GetMember(klassInstance, "<#= method #>")();
         }
 <# 
 } #>

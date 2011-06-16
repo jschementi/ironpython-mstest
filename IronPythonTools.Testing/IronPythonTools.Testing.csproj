@@ -140,7 +140,8 @@
     <Compile Include="Common\BaseCodeGenerator.cs" />
     <Compile Include="Common\BaseCodeGeneratorWithSite.cs" />
     <Compile Include="Guids.cs" />
-    <Compile Include="IronPythonExecutor.cs" />
+    <Compile Include="TestClassDefinition.cs" />
+    <Compile Include="IronPythonTestingParser.cs" />
     <Compile Include="IronPythonTestingGenerator.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -156,7 +157,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TestPreprocessedTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="TestTemplate.cs" />
+    <Compile Include="TestPreprocessedTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
